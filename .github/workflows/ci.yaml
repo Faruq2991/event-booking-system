@@ -23,16 +23,16 @@ jobs:
 
     
       - name: Build Backend
-        run: docker build -t faruq96/my-backend:latest -f cmd/Dockerfile .
+        run: docker build -t faruq96/event-booking-backend:${{ env.SHORT_SHA }} -f cmd/Dockerfile .
 
       - name: Push Backend Image
-        run: docker push faruq96/my-backend:latest
+        run: docker push faruq96/event-booking-backend:${{ env.SHORT_SHA }}
 
       - name: Build Frontend
-        run: docker build -t faruq96/my-frontend:latest -f web/Dockerfile web
+        run: docker build -t faruq96/event-booking-frontend:${{ env.SHORT_SHA }} -f web/Dockerfile web
 
       - name: Push Frontend Image
-        run: docker push faruq96/my-frontend:latest
+        run: docker push faruq96/event-booking-frontend:${{ env.SHORT_SHA }}
 
       - name: Success Confirmation
         run: echo "Build and push completed successfully!"
