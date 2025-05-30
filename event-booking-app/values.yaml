@@ -1,5 +1,5 @@
 image:
-  repository: Faruq2991/event-booking-system
+  repository: faruq2991/event-booking-system
   tag: f83f9a1
   pullPolicy: IfNotPresent
 service:
