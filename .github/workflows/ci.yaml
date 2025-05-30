@@ -38,5 +38,18 @@ jobs:
       - name: Push Frontend Image
         run: docker push faruq96/event-booking-frontend:${{ env.SHORT_SHA }}
 
+      - name: Configure git Author
+        run: |
+          git config --local user.email "faruqadam.93@gmail.com"
+          git config --local user.name "Faruq2991"
+
+      - name: Update helm chart with new image tag
+        run: |
+          sed -i "s/tag:.*/tag: ${{ env.SHORT_SHA }}/" ./event-booking/values.yaml
+          git add ./event-booking/values.yaml
+          git commit -m "Update image tag to ${{env.SHORT_SHA}}"
+          git push
+
+
       - name: Success Confirmation
         run: echo "Build and push completed successfully!"
