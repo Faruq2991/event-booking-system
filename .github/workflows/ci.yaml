@@ -31,6 +31,9 @@ jobs:
       - name: Build Backend
         run: docker build -t faruq2991/event-booking-backend:${{ env.SHORT_SHA }} -f cmd/Dockerfile .
 
+      - name: Docker Login Debugging
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
       - name: Push Backend Image
         run: docker push faruq2991/event-booking-backend:${{ env.SHORT_SHA }}
 
