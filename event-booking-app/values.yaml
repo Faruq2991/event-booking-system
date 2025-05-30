@@ -1,6 +1,6 @@
 image:
   repository: Faruq2991/event-booking-system
-  tag: 7659ec9
+  tag: 80d9ca6
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
