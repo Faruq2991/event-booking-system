@@ -49,8 +49,7 @@ jobs:
       # Update both backend and frontend tags
       - name: Update helm chart with new image tags
         run: |
-          sed -i "s/backendTag:.*/backendTag: ${{ env.SHORT_SHA }}/" ./event-booking-app/values.yaml
-          sed -i "s/frontendTag:.*/frontendTag: ${{ env.SHORT_SHA }}/" ./event-booking-app/values.yaml
+          sed -i "s/^\([[:space:]]*tag:\).*/\1 ${{ env.SHORT_SHA }}/" ./event-booking-app/values.yaml
           git add ./event-booking-app/values.yaml
           git commit -m "Update image tags to ${{env.SHORT_SHA}}"
           git push
